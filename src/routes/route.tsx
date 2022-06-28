@@ -1,30 +1,17 @@
-import React from "react";
-import { Route,Navigate } from "react-router-dom";
+import React from 'react';
+import {  Navigate } from 'react-router-dom';
 //@ts-ignore
-import { useAuth } from "../contexts/Auth"
+import { useAuth } from '../contexts/AuthContext';
 
-const AppRoute = ({
-  component: Component,
-  layout: Layout,
-  isAuthProtected: isAuthProtected,
-  ...rest
-}: any) => {
-  const user: any = useAuth()
 
-  return (
-    <Route
-      {...rest}
+function RequireAuth({ children }: { children: JSX.Element }) {
+  const user: any = useAuth();
 
-      render={(props: any) => {if (isAuthProtected && user.user === null) {
-        return <Navigate to="/login" />
-      }
+  if (user.value.user === null) {
+    return <Navigate to="/login" state={{ from: location }} />;
+  }
 
-      return (
-        <Layout>
-          <Component {...props} />
-        </Layout>
-      )
-      }}
-    />
-  );
+  return children;
 }
+
+export default RequireAuth;
