@@ -7,7 +7,7 @@ interface AuthLayoutProps {
 const AuthLayout: React.FunctionComponent<AuthLayoutProps> = (props) => {
   return (
     <>
-      <div className="min-h-screen  bg-gray-50 font-Montserrat  antialiased">
+      <div className="h-full font-Montserrat  antialiased">
         {props.children}
       </div>
     </>

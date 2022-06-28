@@ -1,12 +1,10 @@
-const Login = () => {
-  return 'hiii';
-};
+import LoginPage from "../pages/LoginPage";
 
 // Protected Rourtes
 const protectedRoutes: any = [
   {
     path: '/profile',
-    component: Login,
+    component: LoginPage,
   },
 ];
 
@@ -14,7 +12,7 @@ const protectedRoutes: any = [
 const staticRoutes: any = [
   {
     path: '/login',
-    component: Login,
+    component: LoginPage,
   },
 ];
 
